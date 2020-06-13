@@ -25,6 +25,15 @@ function criarCobrinha() {
     context.fillRect(cobrinha[i].x, cobrinha[i].y, box, box)
   }
 }
+//reconhecendo e associando as teclas do teclado ao movimento da cobrinha
+document.addEventListener("keydown", atualizaMov)
+
+function atualizaMov(event) {
+  if (event.keyCode == 37 && direction != "right") direction = "left"
+  if (event.keyCode == 39 && direction != "left") direction = "right"
+  if (event.keyCode == 40 && direction != "up") direction = "down"
+  if (event.keyCode == 38 && direction != "down") direction = "up"
+}
 
 //iniciar o jogo 
 function iniciarJogo() {
@@ -33,6 +42,7 @@ function iniciarJogo() {
 
   let cobrinhaX = cobrinha[0].x
   let cobrinhaY = cobrinha[0].y
+
   // cria o movimento da cobrinha 
   if(direction == "right") cobrinhaX += box
   if(direction == "left") cobrinhaX -= box
@@ -49,7 +59,7 @@ function iniciarJogo() {
   }
 
   cobrinha.unshift(novaCabeca)
-  
+
 }
 
 let jogo = setInterval(iniciarJogo, 100)
