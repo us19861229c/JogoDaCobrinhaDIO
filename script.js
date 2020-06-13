@@ -11,6 +11,12 @@ cobrinha[0] = {
 }
 let direction = "right"
 
+//criando a comidinha - posicionando
+let comidinha = {
+  x: Math.floor(Math.random() * 15 + 1) * box,
+  y: Math.floor(Math.random() * 15 + 1) * box
+}
+
 
 //criando o BG
 function criarBg() {
@@ -25,6 +31,12 @@ function criarCobrinha() {
     context.fillRect(cobrinha[i].x, cobrinha[i].y, box, box)
   }
 }
+//criando a comidinha da cobrinha 
+function desenharComidinha(){
+  context.fillStyle = "red"
+  context.fillRect(comidinha.x, comidinha.y, box, box )
+}
+
 //reconhecendo e associando as teclas do teclado ao movimento da cobrinha
 document.addEventListener("keydown", atualizaMov)
 
@@ -45,6 +57,7 @@ function iniciarJogo() {
 
   criarBg()
   criarCobrinha()
+  desenharComidinha()
 
   let cobrinhaX = cobrinha[0].x
   let cobrinhaY = cobrinha[0].y
