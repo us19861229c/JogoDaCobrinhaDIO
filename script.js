@@ -55,6 +55,14 @@ function iniciarJogo() {
   if(cobrinha[0].y > 15 * box && direction == "down") cobrinha[0].y = 0
   if(cobrinha[0].y < 0 && direction == "up") cobrinha[0].y = 16 * box
 
+  //faz o jogo encerrar caso a cobrinha se choque com ela mesma
+  for (i = 1; i < cobrinha.length; i++) {
+    if(cobrinha[0].x == cobrinha[i].x && cobrinha[0].y == cobrinha[i].y){
+      clearInterval(jogo)
+      alert('Opa! Fim de jogo! :( Reinicie a página para jogar novamente')
+    }
+  }
+
   criarBg()
   criarCobrinha()
   desenharComidinha()
