@@ -68,8 +68,14 @@ function iniciarJogo() {
   if(direction == "down") cobrinhaY += box
   if(direction == "up") cobrinhaY -= box
 
-  //remove o último item do array
-  cobrinha.pop()
+  //cria interação entre a cobrinha e a comidinha
+  if (cobrinhaX != comidinha.x || cobrinhaY != comidinha.y){
+    //remove o último item do array
+    cobrinha.pop()
+  } else {
+    comidinha.x = Math.floor(Math.random() * 15 + 1) * box,
+    comidinha.y = Math.floor(Math.random() * 15 + 1) * box
+  }
 
   //acrescenta novo item à primeira posição do array
   let novaCabeca = {
